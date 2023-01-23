@@ -127,3 +127,63 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+SF/proj 1 Kovin/data/dst-3.0_16_1_hh_database.csv
+SF/proj 1 Kovin/sasha/data/dst-3.0_16_1_hh_database.csv
+Jupyter/data/ab_data.zip
+Jupyter/data/ab_test-redesign_sample_a.zip
+Jupyter/data/ab_test-redesign_sample_b.zip
+Jupyter/data/brons.csv
+Jupyter/data/country_area.zip
+Jupyter/data/country_population.zip
+Jupyter/data/ex.html
+Jupyter/data/grades.xlsx
+Jupyter/data/heart.zip
+Jupyter/data/iris.zip
+Jupyter/data/menu.xml
+Jupyter/data/model.zip
+Jupyter/data/new_menu_good.xml
+Jupyter/data/new_menu.xml
+Jupyter/data/new_recipes.json
+Jupyter/data/query_result_2022-09-19T15_05_43.917917Z.csv
+Jupyter/data/ratings+movies.xlsx
+Jupyter/data/recipes.csv
+Jupyter/data/recipes.json
+Jupyter/data/recipesjson.json
+Jupyter/data/sber_data.csv
+Jupyter/data/silv.csv
+Jupyter/data/solarpower.csv
+Jupyter/data/students_performance.zip
+Jupyter/data/wine_cleared.zip
+Jupyter/data/wine.csv
+SF/proj 1 Kovin/sasha/Project 1.ipynb
+SF/proj 1 Kovin/sasha/data/ExchangeRates.csv
+CP/for cp.txt
+CP/learn/CPproject_2.cpp
+CP/learn/CPproject_2.exe
+CP/learn/CPproject_3.cpp
+CP/learn/CPproject_3.exe
+CP/learn/CPproject_4.cpp
+CP/learn/CPproject_4.exe
+CP/learn/CPproject_5.cpp
+CP/learn/CPproject_5.exe
+CP/learn/CPproject_6.cpp
+CP/learn/CPproject_6.exe
+CP/learn/CPproject.cpp
+CP/learn/CPproject.exe
+CP/praxis/bank.cpp
+CP/praxis/bank.exe
+CP/praxis/cpcalc.cpp
+CP/praxis/cpcalc.exe
+CP/praxis/guessnum.cpp
+CP/praxis/guessnum.exe
+CP/praxis/knbjs.cpp
+CP/praxis/knbjs.exe
+CP/praxis/pyfagr.cpp
+CP/praxis/pyfagr.exe
+CP/praxis/quadr_eq.cpp
+CP/praxis/quadr_eq.exe
+CP/praxis/tempconv.cpp
+CP/praxis/tempconv.exe
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
