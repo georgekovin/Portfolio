@@ -7,7 +7,7 @@ def get_cumseries(data: pd.DataFrame,
     
     """ 
     Description
-    -----------
+    -----------  
         Calculating cumulative metrics for A/B test
     
     Parameters
