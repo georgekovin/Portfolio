@@ -27,7 +27,7 @@ def stattest(data: pd.DataFrame,
     if norm == 'dagostino':
         p = normaltest(data)
         pv = round(p.pvalue[0], 3)
-        alpha = alpha / 2
+        alpha /= 2
 
     ppv = f'p={pv}'
 
@@ -51,7 +51,9 @@ def stattest(data: pd.DataFrame,
             
             t = "Spearman's correlation"
             
-        print(f'Correlation is {res[0]}. \n'
+        corr_res = round(res[0], 2)
+        
+        print(f'Correlation is {corr_res}. \n'
               f'Test is {t} \n'
               '')
     
@@ -89,7 +91,7 @@ def stattest(data: pd.DataFrame,
 
             t = "ANOVA"
 
-        p = res[1]
+        p = round(res[1], 2)
             
         if p > alp:
             print(f'{p} > {alp}. \n'
@@ -152,40 +154,3 @@ def stattest(data: pd.DataFrame,
         if corr:
             corrtest(tst='spearman')
         
-        
-        
-        
-        
-# -----------------------
-
-pizza = pd.read_csv('https://raw.githubusercontent.com/harika-bonthu/Hypothesis-test-examples/main/pizzas.csv')
-
-print('1')
-stattest(data=pizza, alpha=0.05, norm='shapiro')
-
-print('2')
-stattest(data=pizza, alpha=0.05, norm='shapiro', corr=True)
-
-print('3')
-stattest(data=pizza, h_zero='a', h_alt='b', alpha=0.05, norm='shapiro', pvalue=True)
-
-print('4')
-stattest(data=pizza, h_zero='a', h_alt='b', alpha=0.05, norm='shapiro', corr=True, pvalue=True)
-
-print('5')
-stattest(data=pizza, alpha=0.05, norm='shapiro', pvalue=True)
-
-print('6')
-stattest(data=pizza, alpha=0.3, norm='shapiro')
-
-print('7')
-stattest(data=pizza, alpha=0.3, norm='shapiro', corr=True)
-
-print('8')
-stattest(data=pizza, h_zero='a', h_alt='b', alpha=0.3, norm='shapiro', pvalue=True)
-
-print('9')
-stattest(data=pizza, h_zero='a', h_alt='b', alpha=0.3, norm='shapiro', corr=True, pvalue=True)
-
-print('10')
-stattest(data=pizza, alpha=0.3, norm='shapiro', pvalue=True)
