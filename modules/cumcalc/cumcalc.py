@@ -32,26 +32,4 @@ def get_cumseries(data: pd.DataFrame,
         data[cum_] = data[col].cumsum()
     
     return data
-        
-        
-        
 
-# ---------
-
-#df = pd.read_csv('data/ab_data.zip')
-
-#daily_data = df.groupby(['timestamp','group']).agg({
-#    'user_id':'count',
-#    'converted':'sum'
-#}).reset_index().rename(columns={'user_id': 'users_count'})
-
-#daily_data['conversion'] = daily_data['converted'] / daily_data['users_count'] * 100
-
-
-#get_cumseries(data=daily_data, cols=['users_count', 'converted'])
-
-#get_cumseries(data=daily_data, cols=['users_count', 'converted'], groupby='group')
-
-#get_cumseries(data=daily_data, cols=['users_count', 'converted', 'conversion'])
-
-#get_cumseries(data=daily_data, cols=['users_count', 'converted', 'conversion'], groupby='group')
