@@ -131,3 +131,4 @@ dmypy.json
 /modules/__data__
 /ddd
 modules/cumcalc/data/ab_data.zip
+modules/data_cleaner/data/sber_data.csv
