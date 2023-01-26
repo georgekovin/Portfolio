@@ -8,12 +8,12 @@ def get_cumseries(data: pd.DataFrame,
     """ 
     Description
     -----------  
-        Calculating cumulative metrics for A/B test
+        Calculating cumulative metrics for A/B test.
     
     Parameters
     ----------
-        data (DataFrame): Dataframe with metrics
-        cols (list): columns of data that need to calculate
+        data (DataFrame): Dataframe with metrics \n
+        cols (list): columns of data that need to calculate \n
         groupby (str): what cols need to group by
     
     Returns

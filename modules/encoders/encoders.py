@@ -16,9 +16,9 @@ def data_encoder(data: pd.DataFrame,
     
     Parameters
     ----------
-        data (DataFrame): Dataframe with features
-        cols (list): columns of data that need to encode
-        encoder (str): encoder's type, `ordinal`, `onehot`, `binary`
+        data (DataFrame): Dataframe with features \n
+        cols (list): columns of data that need to encode \n
+        encoder (str): encoder's type, `ordinal`, `onehot`, `binary` \n
         concat (bool): concatenate or not to concatenate new features with `data`
     
     Returns
