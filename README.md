@@ -1,2 +1,2 @@
 # Portfolio
-My portfolio and projects to present.
+My portfolio where I present programs and projects made by myself. 
