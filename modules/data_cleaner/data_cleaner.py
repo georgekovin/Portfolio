@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def drop_data(data: pd.DataFrame, 
-              axis: int = [0, 1],
+              axis: str = ['rows', 'cols'],
               threshold: int | float = None) -> pd.DataFrame:
     
     """ 
@@ -14,7 +14,7 @@ def drop_data(data: pd.DataFrame,
     Parameters
     ----------
         data (DataFrame): data itself \n
-        axis (int): dropping axis: 0 is columns, 1 is rows \n
+        axis (str): dropping axis, rows or columns \n
         threshold (int | float): dropping limit
         
     Returns
@@ -23,43 +23,52 @@ def drop_data(data: pd.DataFrame,
         
     """
     
+    # setting default values for 'threshold'
     if threshold is None:
-        print("Enter the 'threshold' value")
-        
-        if axis == 0:
-            print("'axis = 0', hence it must be 'int'")
-        elif axis == 1:
-            print("'axis = 1', hence it must be 'float'")
-        else:
-            print("Invalid value for axis or no axis")
-        
+        if axis == 'rows':
+            threshold = 3
+            
+        if axis == 'cols':
+            threshold = 0.7
+    
+    # 'threshold' is always positive
+    if threshold < 0:
+        print("Threshhold cannot be negative")
         return None
     
-    if axis == 0: # drop rows
+    # the result 'dropped_data' depends on axis
+    if axis == 'rows': 
         if type(threshold) != int:
             print("For dropping rows 'threshold' value must be 'int'")
             return None
         
-        else:
-            shape = data.shape[1]
-            thresh = shape - threshold
-            dropped = data.dropna(axis=axis, thresh=thresh)
+        if threshold > data.shape[1]:
+            print("Threshold cannot be more than number of columns")
+            return None
         
-    elif axis == 1: # drop cols
+        shape = data.shape[1]
+        thresh = shape - threshold
+        dropped_data = data.dropna(axis=0, thresh=thresh)
+        
+    elif axis == 'cols': 
         if type(threshold) != float:
             print("For dropping columns 'threshold' value must be 'float'")
             return None
         
-        else:
-            shape = data.shape[0]
-            thresh = shape * threshold
-            dropped = data.dropna(axis=axis, thresh=thresh)
+        if threshold >= 1:
+            print("Threshold cannot be equal to 1 or more")
+            return None
+        
+        shape = data.shape[0]
+        thresh = shape * threshold
+        dropped_data = data.dropna(axis=1, thresh=thresh)
         
     else:
-        print("Invalid value for axis or no axis")
+        print("Invalid axis or no axis")
         return None
     
-    return dropped
+    # returning the result
+    return dropped_data
 
 
 
@@ -166,9 +175,7 @@ def drop_low_information(data: pd.DataFrame, limit: float = 0.95) -> pd.DataFram
     low_information_cols = [] 
 
     for col in data.columns:
-        
         top_freq = data[col].value_counts(normalize=True).max()
-        
         nunique_ratio = data[col].nunique() / data[col].count()
         
         if (top_freq > limit) or (nunique_ratio > limit):
