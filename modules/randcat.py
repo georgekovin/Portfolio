@@ -7,7 +7,7 @@ a_list = ['red', 'orange',
           'pink', 'white', 
           'gray', 'black']
 
-b_list = a_list
+b_list = a_list.copy()
 
 
 alen = len(a_list)

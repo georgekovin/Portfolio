@@ -13,12 +13,16 @@ from statsmodels.stats import weightstats
 def stattest(data: pd.DataFrame, 
              h_zero: str = None, 
              h_alt: str = None, 
-             alpha: float = [0.01, 0.05, 0.1], 
-             norm: str = ['shapiro', 'dagostino'], 
+             alpha: float = [0.01, 
+                             0.05, 
+                             0.1], 
+             norm: str = ['shapiro', 
+                          'dagostino'], 
              corr: bool = False, 
              pvalue: bool = False):
     
     
+    # --------------------------------------------------------------
     # Normality test
     if norm == 'shapiro':
         p = shapiro(data)
@@ -35,6 +39,7 @@ def stattest(data: pd.DataFrame,
     h_abnorm = 'Abnormal distribution'
 
 
+    # --------------------------------------------------------------
     # Correlation test
     def corrtest(df=data, 
                  tst=None): 
@@ -53,11 +58,12 @@ def stattest(data: pd.DataFrame,
             
         corr_res = round(res[0], 2)
         
-        print(f'Correlation is {corr_res}. \n'
+        print(f'Correlation is {corr_res} \n'
               f'Test is {t} \n'
               '')
     
     
+    # --------------------------------------------------------------
     # P-value test
     def pvaltest(df=data, 
                  hz=h_zero, 
@@ -104,6 +110,7 @@ def stattest(data: pd.DataFrame,
               '')
 
     
+    # --------------------------------------------------------------
     # Data type test
     for col in data.columns:
         if data[col].dtype == 'int' or data[col].dtype == 'float':
@@ -113,6 +120,7 @@ def stattest(data: pd.DataFrame,
             datatype = 'C'
     
     
+    # --------------------------------------------------------------
     # Main test
     if pv > alpha:
         print(f'{ppv} > {alpha} \n{h_norm}'
