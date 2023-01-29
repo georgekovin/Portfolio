@@ -5,6 +5,7 @@ def get_cumseries(data: pd.DataFrame,
                   cols: list, 
                   groupby: str = None) -> pd.DataFrame:
     
+    # documentation
     """ 
     Description
     -----------  
@@ -22,13 +23,23 @@ def get_cumseries(data: pd.DataFrame,
         
     """
     
-    
+    # creating cumulative metrics
     for col in cols:
+        if col not in data.columns:
+            print("No such column in data")
+            return None
+        
         cum_ = 'cum_' + col
         
+        # groupping 
         if groupby is not None: 
-            data[cum_] = data.groupby([groupby])[col].cumsum()
+            if groupby not in data.columns:
+                print("No such column in data")
+                return None
             
+            data[cum_] = data.groupby([groupby])[col].cumsum()
+        
+        # final result
         data[cum_] = data[col].cumsum()
     
     return data
