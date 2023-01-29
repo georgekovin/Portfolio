@@ -1,3 +1,8 @@
+"""
+A function that calculates cumulative metrics from a DataFrame. Created especially for A/B testing in EDA.
+
+"""
+
 import pandas as pd
 
 
