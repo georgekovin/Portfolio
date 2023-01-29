@@ -1,3 +1,9 @@
+"""
+A library with functions that clean DataFrames from missing values, outliers and useless information. \n
+This library was made for Exploratory Data Analysis or preparing data for Machine Learning.
+
+"""
+
 import numpy as np
 import pandas as pd
 
@@ -6,6 +12,7 @@ def drop_data(data: pd.DataFrame,
               axis: str = ['rows', 'cols'],
               threshold: int | float = None) -> pd.DataFrame:
     
+    # documentation
     """ 
     Description
     -----------  
@@ -28,12 +35,16 @@ def drop_data(data: pd.DataFrame,
         if axis == 'rows':
             threshold = 3
             
-        if axis == 'cols':
+        elif axis == 'cols':
             threshold = 0.7
+        
+        else:
+            print("Invalid axis or no axis")
+            return None
     
-    # 'threshold' is always positive
-    if threshold < 0:
-        print("Threshhold cannot be negative")
+    # 'threshold' is always more than 0
+    if threshold <= 0:
+        print("Threshhold cannot be zero or negative")
         return None
     
     # the result 'dropped_data' depends on axis
@@ -71,12 +82,13 @@ def drop_data(data: pd.DataFrame,
     return dropped_data
 
 
-
 def outliers_iqr(data: pd.DataFrame, 
                  feature: str, 
                  left: float = 1.5, 
-                 right: float = 1.5):
+                 right: float = 1.5, 
+                 what: str = ['outliers', 'cleaned']) -> pd.DataFrame:
     
+    # documentation
     """ 
     Description
     -----------  
@@ -87,36 +99,56 @@ def outliers_iqr(data: pd.DataFrame,
         data (DataFrame): data itself \n
         feature (str): column of data \n
         left (float): value for lower bound of cleaning \n
-        right (float): value for upper bound of cleaning
+        right (float): value for upper bound of cleaning \n
+        what (str): what you need to return, outliers or cleaned
         
     Returns
     -------
-        tuple: two Dataframes, first is outliers only and second is cleaned data
+        DataFrame: data with outliers only or already cleaned data
         
     """
     
+    # selecting a feature 
+    if feature not in data.columns:
+        print("No such feature in data's columns")
+        return None
+    
     x = data[feature]
     
+    # setting IQR
     quartile_1, quartile_3 = x.quantile(0.25), x.quantile(0.75)
     
     iqr = quartile_3 - quartile_1
     
+    # setting bounds 
+    if (left <= 0) or (right <= 0):
+        print("Bounds cannot be zero or negative")
+        return None
+    
     lower_bound = quartile_1 - (iqr * left)
     upper_bound = quartile_3 + (iqr * right)
     
+    # final result
     outliers = data[(x < lower_bound) | (x > upper_bound)]
     cleaned = data[(x > lower_bound) & (x < upper_bound)]
     
-    return (outliers, cleaned)
-
-
+    if what == 'outliers':
+        return outliers
+    elif what == 'cleaned':
+        return cleaned
+    else:
+        print("Invalid literal for 'what'")
+        return None
+    
 
 def outliers_sigmas(data: pd.DataFrame, 
                     feature: str, 
                     left: int = 3,
                     right: int = 3,
-                    log_scale: bool = False):
+                    log_scale: bool = False, 
+                    what: str = ['outliers', 'cleaned']) -> pd.DataFrame:
     
+    # documentation
     """ 
     Description
     -----------  
@@ -128,34 +160,54 @@ def outliers_sigmas(data: pd.DataFrame,
         feature (str): column of data \n
         left (float): value for lower bound of cleaning \n
         right (float): value for upper bound of cleaning \n
-        log_scale (bool): logarithming the feature for more normal distribution
+        log_scale (bool): logarithming the feature for more normal distribution \n
+        what (str): what you need to return, outliers or cleaned
         
     Returns
     -------
-        tuple: two Dataframes, first is outliers only and second is cleaned data
+        DataFrame: data with outliers only or already cleaned data
         
     """
     
+    # checking a feature 
+    if feature not in data.columns:
+        print("No such feature in data's columns")
+        return None
+    
+    # logarithming
     if log_scale:
         x = np.log(data[feature]+1)
     else:
         x = data[feature]
-        
+    
+    # setting mu and sigma
     mu = x.mean()
     sigma = x.std()
+    
+    # setting bounds
+    if (left <= 0) or (right <= 0):
+        print("Bounds cannot be zero or negative")
+        return None
     
     lower_bound = mu - (left * sigma)
     upper_bound = mu + (right * sigma)
     
+    # final result
     outliers = data[(x < lower_bound) | (x > upper_bound)]
     cleaned = data[(x > lower_bound) & (x < upper_bound)]
     
-    return (outliers, cleaned)
-
+    if what == 'outliers':
+        return outliers
+    elif what == 'cleaned':
+        return cleaned
+    else:
+        print("Invalid literal for 'what'")
+        return None
 
 
 def drop_low_information(data: pd.DataFrame, limit: float = 0.95) -> pd.DataFrame:
 
+    # documentation
     """ 
     Description
     -----------  
@@ -172,6 +224,12 @@ def drop_low_information(data: pd.DataFrame, limit: float = 0.95) -> pd.DataFram
         
     """
     
+    # cheching limit
+    if (limit <= 0) or (limit >= 1):
+        print("Invalid value for 'limit'")
+        return None
+    
+    # selecting low information columns
     low_information_cols = [] 
 
     for col in data.columns:
@@ -180,7 +238,9 @@ def drop_low_information(data: pd.DataFrame, limit: float = 0.95) -> pd.DataFram
         
         if (top_freq > limit) or (nunique_ratio > limit):
             low_information_cols.append(col)
-            
+    
+    # final result
     information_data = data.drop(low_information_cols, axis=1)
     
     return information_data 
+
