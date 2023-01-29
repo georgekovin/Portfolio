@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def get_cumseries(data: pd.DataFrame, 
-                  cols: list, 
+                  cols: str | list, 
                   groupby: str = None) -> pd.DataFrame:
     
     # documentation
@@ -23,13 +23,17 @@ def get_cumseries(data: pd.DataFrame,
         
     """
     
+    # making list from string
+    if type(cols) == str:
+        cols = [cols]
+    
     # creating cumulative metrics
     for col in cols:
         if col not in data.columns:
             print("No such column in data")
             return None
         
-        cum_ = 'cum_' + col
+        cum_col = 'cum_' + col
         
         # groupping 
         if groupby is not None: 
@@ -37,10 +41,10 @@ def get_cumseries(data: pd.DataFrame,
                 print("No such column in data")
                 return None
             
-            data[cum_] = data.groupby([groupby])[col].cumsum()
+            data[cum_col] = data.groupby([groupby])[col].cumsum()
         
         # final result
-        data[cum_] = data[col].cumsum()
+        data[cum_col] = data[col].cumsum()
     
     return data
 
