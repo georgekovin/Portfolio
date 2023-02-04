@@ -1,6 +1,6 @@
 """
 A library with functions that clean DataFrames from missing values, outliers and useless information. \n
-This library was made for Exploratory Data Analysis or preparing data for Machine Learning.
+This library was made for Data Cleaning and preparing data for Machine Learning.
 
 """
 
