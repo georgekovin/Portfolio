@@ -518,3 +518,5 @@ def multiple_decision(pv_a: float,
         print(f"We accept null hypothesis. {h0}.")
     else:
         print(f"We reject null hypothesis. {h1}.")
+        
+        
