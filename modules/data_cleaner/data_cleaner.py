@@ -8,6 +8,9 @@ import numpy as np
 import pandas as pd
 
 
+
+### --- DATA DROPPER ---
+
 def drop_data(data: pd.DataFrame, 
               axis: str = ['rows', 'cols'],
               threshold: int | float = None) -> pd.DataFrame:
@@ -82,6 +85,9 @@ def drop_data(data: pd.DataFrame,
     return dropped_data
 
 
+
+### --- OUTLIERS FINDER WITH IQR METHOD ---
+
 def outliers_iqr(data: pd.DataFrame, 
                  feature: str, 
                  left: float = 1.5, 
@@ -140,6 +146,9 @@ def outliers_iqr(data: pd.DataFrame,
         print("Invalid literal for 'what'")
         return None
     
+
+
+### --- OUTLIERS FINDER WITH Z-SCORE METHOD ---
 
 def outliers_sigmas(data: pd.DataFrame, 
                     feature: str, 
@@ -204,6 +213,9 @@ def outliers_sigmas(data: pd.DataFrame,
         print("Invalid literal for 'what'")
         return None
 
+
+
+### --- LOW INFORMATION DROPPER ---
 
 def drop_low_information(data: pd.DataFrame, limit: float = 0.95) -> pd.DataFrame:
 
