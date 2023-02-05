@@ -9,5 +9,5 @@ My interviewer said that no one did this task right. So I wanted to try it.
 * You can use it by placing the file `sqeq.py` in the directory with your current project and import it with `from sqeq import square_equation`.
 
 ## Conclusion
-All tests was passed in `sqeq_test.ipynb`.
+All tests was passed in `sqeq_test.ipynb`. And all are successfil.
 

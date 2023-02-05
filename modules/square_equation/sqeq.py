@@ -1,3 +1,8 @@
+"""
+Simple function for quadratic equation.
+
+"""
+
 def square_equation(a: float, 
                     b: float = None, 
                     c: float = None, 
