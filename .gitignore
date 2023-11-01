@@ -134,6 +134,4 @@ modules/cumcalc/data/ab_data.zip
 modules/data_cleaner/data/sber_data.csv
 modules/AB_analytics/data/ab_data_tourist.csv
 /beta
-projects/ML Classification project/data/bank_fin.zip
-projects/Data Analysis project/data
-projects/Kaggle Competition project/data
+/projects 
