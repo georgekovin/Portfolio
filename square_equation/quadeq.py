@@ -3,29 +3,30 @@ Simple function for quadratic equation.
 
 """
 
-def square_equation(a: float, 
-                    b: float = None, 
-                    c: float = None, 
-                    real_only: bool = None,
-                    round_to: int = None) -> tuple: 
+# MAIN FUNCTION
+def quadratic_equation(a: float, 
+                       b: float = None, 
+                       c: float = None, 
+                       real_only: bool = None,
+                       round_to: int = None) -> tuple: 
     
     # documentation
     """
     Description
     -----------
-        Function for quadratic equation.
+        Function for quadratic equation
     
     Parameters
     ----------
-        a (float): quadratic coefficient
-        b (float): linear coefficient
-        c (float): constant coefficient
-        real_only (bool): returns real parts only if roots are complex numbers
-        round_to (int): rounding values if you need to
+        a (`float`): quadratic coefficient
+        b (`float`): linear coefficient
+        c (`float`): constant coefficient
+        real_only (`bool`): returns real parts only if roots are complex numbers
+        round_to (`int`): rounding values if you need to
     
     Result
     ------
-        tuple: contains two roots of equation (x1, x2), float or complex
+        `tuple`: contains two roots of equation (x1, x2), `float` or `complex`
     
     """
 
@@ -91,3 +92,6 @@ def square_equation(a: float,
     
     return result 
 
+
+# ALIASES
+qe = q_eq = quadeq = sqeq = square_eq = square_equation = quadratic_equation
