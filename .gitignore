@@ -130,8 +130,6 @@ dmypy.json
 
 /modules/__data__
 /ddd
-modules/cumcalc/data/ab_data.zip
-modules/data_cleaner/data/sber_data.csv
-modules/AB_analytics/data/ab_data_tourist.csv
+/data_cleaner/data/sber_data.csv
+/AB_analytics/data/ab_data_tourist.csv
 /beta
-/projects 
