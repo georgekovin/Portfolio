@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/modules/__data__
+
 /ddd
 /data_cleaner/data/sber_data.csv
 /AB_analytics/data/ab_data_tourist.csv
